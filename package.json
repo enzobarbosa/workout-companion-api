@@ -1,0 +1,27 @@
+{
+  "name": "c",
+  "version": "1.0.0",
+  "description": "Api de livraison de restaurants",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Enzo",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.11",
+    "request": "^2.88.2",
+    "stripe": "^8.190.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13",
+    "standard": "^16.0.4"
+  }
+}
