@@ -8,7 +8,7 @@ const WorkoutSchema = Schema({
     ref: 'User',
     required: true
   },
-  cart: [{
+  workout: [{
     type: Schema.Types.ObjectId,
     ref: 'Exercice',
     required: true

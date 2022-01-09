@@ -49,13 +49,11 @@ app.get('/', (req, res) => {
 app.use(router)
 
 // Déclaration des routes d'API principales
-app.use('/countries', require('./routes/countries'))
-app.use('/restaurants', require('./routes/restaurants'))
 app.use('/auth', require('./routes/users/auth'))
 app.use('/me', require('./routes/users'))
-app.use('/dishes', require('./routes/dishes'))
-app.use('/payment', require('./routes/payment'))
-app.use('/order', require('./routes/order'))
+app.use('/muscles', require('./routes/muscles'))
+app.use('/exercices', require('./routes/exercices'))
+app.use('/workout', require('./routes/workout'))
 // Lancement du serveur
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
