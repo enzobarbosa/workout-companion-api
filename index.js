@@ -3,6 +3,16 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const multer = require('multer')
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/')
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}_${file.originalname}.jpg`)
+  }
+})
+const upload = multer({ storage: storage })
 
 // On importe le middleware chargé d'enregistrer les appels d'API
 const loggerMiddleWare = require('./middleware/logger')
@@ -18,6 +28,9 @@ app.use(loggerMiddleWare)
 // Initialisation de Express pour utiliser le body des requêtes au format UrlEncoded et JSON
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+app.use(express.static('public'))
+app.use('/uploads', express.static('uploads'))
 
 const router = express.Router()
 
@@ -43,6 +56,12 @@ db.once('open', () => {
 // res = response
 app.get('/', (req, res) => {
   res.send('Coucou !')
+})
+
+app.post('/upload', upload.single('file'), function (req, res, next) {
+  console.log(req.file)
+  console.log(req.body)
+  return res.send(req.file)
 })
 
 // Utilisation du routeur par express
